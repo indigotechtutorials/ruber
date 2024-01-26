@@ -1,0 +1,27 @@
+<div id="<%= dom_id ride %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Pickup location:</strong>
+    <%= ride.pickup_location %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Dropoff location:</strong>
+    <%= ride.dropoff_location %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Customer:</strong>
+    <%= ride.customer_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= ride.status %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this ride", ride, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this ride", edit_ride_path(ride), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

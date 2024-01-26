@@ -1,0 +1,6 @@
+<div class="w-full p-2 bg-gray-300">
+  <p class="text-lg"> Ride from <%= ride.pickup_location %> to <%= ride.dropoff_location %> </p>
+  <p class="text-lg"> For customer <%= ride.customer_email %> </p>
+  <%= link_to "Accept this ride", available_rides_path(ride_id: ride.id), class: "bg-blue-500 p-2 rounded-lg text-lg text-blue-100", 
+      data: { turbo_method: :post } %>
+</div>

@@ -1,0 +1,25 @@
+<div class="w-full min-h-[100vh] bg-indigo-500 flex flex-col items-center pt-36">
+  <h1 class="font-bold text-6xl">Ruber</h1>
+  <p class="text-lg mt-2">A ride sharing app built with Ruby on Rails and Hotwire</p>
+
+  <% if current_customer || current_driver %>
+    <% if current_customer %>
+      <% if current_customer.active_ride %>
+        <p class="text-2xl"> Your ride to <%= current_customer.active_ride.dropoff_location %> is scheduled </p>
+      <% else %>
+        <%= link_to "Request New Ride", new_ride_path, class: "bg-blue-500 text-blue-50 p-2 rounded-lg" %>
+      <% end %>
+    <% else %>
+      <% if current_driver.active_ride %>
+        <p class="text-2xl"> Your driving <%= current_driver.active_ride.customer_email %> to <%= current_driver.active_ride.dropoff_location %> </p>
+      <% else %>
+        <%= link_to "View Available Rides", available_rides_path, class: "bg-blue-500 text-blue-50 p-2 rounded-lg" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="flex items-center gap-4 mt-6">
+      <%= link_to "Sign up as Customer", new_customer_registration_path, class: "bg-blue-500 text-lg p-2 rounded-lg text-gray-100" %>
+      <%= link_to "Sign up as Driver", new_driver_registration_path, class: "bg-green-500 text-lg p-2 rounded-lg text-gray-100" %>
+    </div>
+  <% end %>
+</div>
